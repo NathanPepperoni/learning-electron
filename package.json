@@ -1,0 +1,30 @@
+{
+  "name": "learning-electron",
+  "version": "1.0.0",
+  "description": "trying to figure out how electron works",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package-win": "npm run setup && electron-packager build learning-electron --out=build --overwrite --asar",
+    "setup": "npm run build-clean && npm run build-create",
+    "build-create": "mkdir build",
+    "build-clean": "rm -rf build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reniat/learning-electron.git"
+  },
+  "keywords": [
+    "experiment"
+  ],
+  "author": "Nathan Pettorini",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/reniat/learning-electron/issues"
+  },
+  "homepage": "https://github.com/reniat/learning-electron#readme",
+  "devDependencies": {
+    "electron": "^2.0.8",
+    "electron-packager": "^12.1.1"
+  }
+}
