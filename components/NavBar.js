@@ -1,23 +1,48 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import AppBar from 'react-toolbox/lib/app_bar';
+import { TitleBar } from 'react-desktop/windows';
 
-class NavBar extends React.Component{
-    constructor() {
-        super();
-        this.state = {
-            title: ""
-        };   
+const remote = require('electron').remote;
+let window = remote.getCurrentWindow();
+
+class NavBar extends React.Component {
+    static defaultProps = {
+        color: '#1D2731',
+        theme: 'dark'
+    };
+
+    constructor(props) {
+        super(props);
+        this.state = { isMaximized: false };
     }
+
+    close = () => window.close();
+
+    minimize = () => window.minimize();
+
+    toggleMaximize = () => {
+        this.state.isMaximized ? window.unmaximize() : window.maximize();
+        this.setState({ isMaximized: !this.state.isMaximized })
+    };
 
     render() {
         return (
-            <div id="test"><AppBar /></div>
+            <TitleBar
+                title="My Windows Application"
+                controls
+                isMaximized={this.state.isMaximized}
+                theme={this.props.theme}
+                background={this.props.color}
+                onCloseClick={this.close}
+                onMinimizeClick={this.minimize}
+                onMaximizeClick={this.toggleMaximize}
+                onRestoreDownClick={this.toggleMaximize}
+            />
         );
     }
-
 }
+
 export default NavBar;
 
 const wrapper = document.getElementById("navbar");
-wrapper ? ReactDOM.render(<NavBar />, wrapper) : false;
+wrapper? ReactDOM.render(<NavBar />, wrapper) : false;
