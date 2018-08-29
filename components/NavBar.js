@@ -5,6 +5,8 @@ import { TitleBar } from 'react-desktop/windows';
 const remote = require('electron').remote;
 let window = remote.getCurrentWindow();
 
+const addon = require('../build/Release/addon.node');
+
 class NavBar extends React.Component {
     static defaultProps = {
         color: '#1D2731',
@@ -26,9 +28,10 @@ class NavBar extends React.Component {
     };
 
     render() {
+        let titleText = addon.hello();
         return (
             <TitleBar
-                title="My Windows Application"
+                title={titleText}
                 controls
                 isMaximized={this.state.isMaximized}
                 theme={this.props.theme}

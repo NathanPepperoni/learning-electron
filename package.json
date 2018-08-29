@@ -4,6 +4,9 @@
   "description": "trying to figure out how electron works",
   "main": "main.js",
   "scripts": {
+    "re-install": "npm install && npm run rebuild",
+    "re-run": "npm run re-install && npm run start",
+    "rebuild": "electron-rebuild",
     "start": "electron .",
     "package-win": "npm run setup && electron-packager . learning-electron --out=build --overwrite",
     "setup": "npm run build-clean && npm run build-create",
@@ -34,8 +37,10 @@
     "css-loader": "^1.0.0",
     "electron": "^2.0.8",
     "electron-packager": "^12.1.1",
+    "electron-rebuild": "^1.8.2",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "node-loader": "^0.6.0",
     "node-sass": "^4.9.3",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
@@ -46,6 +51,8 @@
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
+    "node-gyp": "^3.8.0",
+    "node-loader": "^0.6.0",
     "react-desktop": "^0.3.7",
     "react-toolbox": "^2.0.0-beta.13"
   }

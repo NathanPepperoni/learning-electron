@@ -63,3 +63,4 @@ typings/
 #build directory
 build/
 dist/
+bin/
